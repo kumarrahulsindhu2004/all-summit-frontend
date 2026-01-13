@@ -19,7 +19,9 @@ const MyPhoto = () => {
     }
 
     setError("");
-    setImageUrl(`http://localhost:5000/image/${photoId}`);
+    // setImageUrl(`http://localhost:5000/image/${photoId}`);
+    setImageUrl(`https://all-summit-backend.onrender.com/image/${photoId}`);
+
     setShowEditor(true);
   };
 
