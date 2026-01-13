@@ -1,0 +1,116 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 72px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Logo */
+.header-logo img {
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Navigation */
+.header-nav {
+  display: flex;
+  gap: 36px;
+}
+
+.header-nav a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #334155;
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+.header-nav a.active {
+  color: #e11d48;
+  border-bottom: 2px solid #e11d48;
+}
+
+/* Button */
+.get-photo-btn {
+  background: #e11d48;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.get-photo-btn:hover {
+  background: #be123c;
+}
+
+
+/* existing styles remain */
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: #0f172a;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.mobile-menu a {
+  padding: 14px 0;
+  text-decoration: none;
+  font-size: 16px;
+  color: #334155;
+}
+
+.mobile-menu a.active {
+  color: #e11d48;
+}
+
+.mobile-menu button {
+  margin-top: 16px;
+  background: #e11d48;
+  border: none;
+  padding: 14px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .header-nav,
+  .header-action {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

@@ -1,0 +1,75 @@
+.footer {
+  width: 100%;
+  padding: 24px 80px;
+  background: linear-gradient(90deg, #020617, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left links */
+.footer-left {
+  display: flex;
+  gap: 28px;
+}
+
+.footer-left a {
+  color: #94a3b8;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.footer-left a:hover {
+  color: #ffffff;
+}
+
+/* Right social */
+.footer-right {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-right a {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #020617;
+  border: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5f5;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-right a:hover {
+  background: #e11d48;
+  border-color: #e11d48;
+  color: #ffffff;
+}
+
+/* ========================= */
+/* 🔥 RESPONSIVE BREAKPOINTS */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .footer-left {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .footer-right {
+    justify-content: center;
+  }
+}
