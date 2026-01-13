@@ -1,3 +1,4 @@
+/* OVERLAY */
 .editor-overlay {
   position: fixed;
   inset: 0;
@@ -7,9 +8,10 @@
   flex-direction: column;
 }
 
+/* HEADER */
 .editor-header {
   height: 60px;
-  padding: 0 24px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,36 +22,39 @@
 .editor-header button {
   background: #f1f5f9;
   border: none;
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 10px;
   cursor: pointer;
 }
 
+/* BODY */
 .editor-body {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 420px;
   gap: 32px;
   padding: 32px;
+  overflow-y: auto;
 }
 
-/* IMAGE */
+/* IMAGE PREVIEW */
 .editor-preview {
   position: relative;
   width: 360px;
-  aspect-ratio: 3 / 4;   /* 🔥 CRITICAL */
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 24px;
   background: #ffffff;
-  margin-left: 10%;
+  margin: 0 auto;
 }
 
 .editor-preview img {
   width: 100%;
   height: 100%;
-  object-fit: cover;    /* 🔥 PREVENTS EXTRA SPACE */
+  object-fit: cover;
   display: block;
 }
+
 /* BUBBLES */
 .bubble {
   position: absolute;
@@ -59,6 +64,8 @@
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
+  max-width: 80%;
+  word-wrap: break-word;
 }
 
 .bubble.top {
@@ -69,6 +76,7 @@
 .bubble.middle {
   top: 50%;
   left: 20px;
+  transform: translateY(-50%);
 }
 
 .bubble.bottom {
@@ -80,30 +88,23 @@
 .editor-controls {
   display: flex;
   flex-direction: column;
-  
-  
-}
-.Edit{
-    color: black;
+  gap: 14px;
 }
 
 .editor-controls h2 {
-  margin-bottom: 20px;
-}
-
-.editor-controls label {
-  font-size: 12px;
-  margin-top: 14px;
+  margin-bottom: 12px;
 }
 
 .editor-controls input {
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
+  font-size: 14px;
 }
 
+/* BUTTON */
 .save-btn {
-  margin-top: 24px;
+  margin-top: 12px;
   background: #dc2626;
   color: white;
   border: none;
@@ -113,9 +114,56 @@
   cursor: pointer;
 }
 
-/* MOBILE */
+/* ========================= */
+/* 📱 TABLET (≤ 900px) */
+/* ========================= */
 @media (max-width: 900px) {
   .editor-body {
     grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .editor-preview {
+    width: 320px;
+  }
+
+  .editor-controls {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE (≤ 480px) */
+/* ========================= */
+@media (max-width: 480px) {
+  .editor-header {
+    padding: 0 12px;
+    font-size: 14px;
+  }
+
+  .editor-body {
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .editor-preview {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 18px;
+  }
+
+  .editor-controls {
+    width: 100%;
+  }
+
+  .editor-controls input {
+    font-size: 14px;
+  }
+
+  .save-btn {
+    position: sticky;
+    bottom: 12px;
+    width: 100%;
   }
 }
