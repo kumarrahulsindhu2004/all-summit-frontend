@@ -48,8 +48,10 @@
   max-width: 280px;             /* 🔥 smaller on phone */
   aspect-ratio: 3 / 4;
   overflow: hidden;
+  /* overflow: visible; */
+
   border-radius: 18px;
-  background: #ffffff;
+  /* background: #ffffff; */
   margin: 0 auto;
 }
 
@@ -85,10 +87,30 @@
 }
 
 .bubble.bottom {
-  bottom: 12px;
+  bottom: 18px;
   left: 12px;
 }
 
+
+
+/* Image stays clipped */
+.image-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ensure bubbles appear above image */
+.bubble {
+  z-index: 5;
+}
 /* CONTROLS */
 .editor-controls {
   display: flex;
@@ -164,4 +186,364 @@
   .save-btn {
     position: static;                  /* normal button */
   }
+}
+
+
+
+
+
+.share-btn {
+  background: #0f172a;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.share-btn:hover {
+  background: #020617;
+}
+
+
+
+
+
+
+
+
+
+
+/* Add touch animations and transitions */
+.cloud-svg {
+  padding: 0;
+  background: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.cloud-svg:hover {
+  transform: scale(1.08) translateY(-4px);
+}
+
+.cloud-svg:active {
+  transform: scale(0.96) translateY(2px);
+}
+
+.cloud-svg svg {
+  width: 170px;
+  height: 60px;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+  transition: filter 0.3s ease;
+}
+
+.cloud-svg:hover svg {
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.3));
+}
+
+.cloud-svg span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #222;
+  padding: 0 14px;
+}
+
+/* Add touch animations for heart shape */
+.heart-svg {
+  padding: 0;
+  background: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.heart-svg:hover {
+  transform: scale(1.12) rotate(5deg) translateY(-6px);
+  animation: heartPulse 0.6s ease;
+}
+
+.heart-svg:active {
+  transform: scale(0.95) rotate(0deg) translateY(2px);
+}
+
+.heart-svg svg {
+  width: 110px;
+  height: 80px;
+  transition: filter 0.3s ease, drop-shadow 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(255, 77, 109, 0.3));
+}
+
+.heart-svg:hover svg {
+  filter: drop-shadow(0 6px 16px rgba(255, 77, 109, 0.5));
+}
+
+.heart-svg span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* Add heart pulse animation on hover */
+@keyframes heartPulse {
+  0% {
+    transform: scale(1.12) rotate(5deg) translateY(-6px);
+  }
+  50% {
+    transform: scale(1.18) rotate(5deg) translateY(-8px);
+  }
+  100% {
+    transform: scale(1.12) rotate(5deg) translateY(-6px);
+  }
+}
+
+
+
+
+
+/* Editor container styles */
+.editor-overlay {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: white;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+}
+
+.editor-header span {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.editor-header button {
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editor-header button:hover {
+  border-color: #999;
+  color: #666;
+}
+
+.editor-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 32px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Image preview section */
+.editor-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 9 / 16;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Simplified classic bubble styles for overlays */
+.bubble {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+}
+
+.bubble span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+/* Top cloud bubble */
+.bubble.top {
+  top: 20px;
+  left: 30px;
+  width: 150px;
+  height: 50px;
+}
+
+.bubble.top span {
+  color: #333;
+  font-size: 12px;
+}
+
+.bubble.top svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+  transition: filter 0.2s ease;
+}
+
+.bubble.top:hover svg {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
+}
+
+/* Middle speech bubble */
+.bubble.middle {
+  bottom: 120px;
+  left: 20px;
+  width: 130px;
+  background: white;
+  color: #333;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-size: 12px;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+}
+
+.bubble.middle:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+.bubble.middle::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 0 solid transparent;
+  border-top: 10px solid white;
+}
+
+/* Bottom heart bubble */
+.bubble.bottom {
+  bottom: 20px;
+  left: 15px;
+  width: 120px;
+  height: 100px;
+}
+
+.bubble.bottom span {
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.bubble.bottom svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 6px rgba(255, 77, 109, 0.2));
+  transition: filter 0.2s ease;
+}
+
+.bubble.bottom:hover svg {
+  filter: drop-shadow(0 4px 10px rgba(255, 77, 109, 0.35));
+}
+
+/* Editor controls section */
+.editor-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editor-controls h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.editor-controls input {
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.editor-controls input:focus {
+  outline: none;
+  border-color: #999;
+  box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.1);
+}
+
+.save-btn,
+.share-btn {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-btn {
+  background: #ff4d6d;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #e63d5d;
+  box-shadow: 0 4px 12px rgba(255, 77, 109, 0.3);
+}
+
+.share-btn {
+  background: #1a1a2e;
+  color: white;
+}
+
+.share-btn:hover {
+  background: #0f0f1e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
